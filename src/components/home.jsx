@@ -19,6 +19,12 @@ export default function Home() {
                 <div className='row' style={{paddingTop:'40px', maxWidth:'350px'}}>
                     <div className='col'>
                     <Card style={{backgroundColor:'transparent'}}>
+                        <Card.Img variant='top' src={connect} />
+                        <Card.Text>Connect</Card.Text>
+                    </Card>
+                    </div>
+                    <div className='col'>
+                    <Card style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={receive} />
                         <Card.Text>Receive</Card.Text>
                     </Card>
@@ -27,12 +33,6 @@ export default function Home() {
                     <Card style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={send} />
                         <Card.Text>Send</Card.Text>
-                    </Card>
-                    </div>
-                    <div className='col'>
-                    <Card style={{backgroundColor:'transparent'}}>
-                        <Card.Img variant='top' src={connect} />
-                        <Card.Text>Connect</Card.Text>
                     </Card>
                     </div>
                 </div>
