@@ -1,3 +1,8 @@
 .App {
-  text-align: center;
+  color: white;
+}
+
+.card{
+  width: 50px;
+  font-size: 12px;
 }
