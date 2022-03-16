@@ -58,6 +58,7 @@ export default function Home() {
             </div>
             <div align='center' style={{marginTop:'60px'}}>
                 
+<<<<<<< HEAD
                 <h1>{balance} ALGO</h1>
                 {connected ?
                 <div style={{display:'flex', justifyContent: 'center'}}>
@@ -72,6 +73,14 @@ export default function Home() {
                 
                 
                 <div className='row' style={{paddingTop:'20px', maxWidth:'350px'}}>
+=======
+
+                <h1 style={{color:'#76F935'}}>{balance} Algo</h1>
+
+                
+                <h5 style={{paddingTop:'10px', color:'#76F935'}}>~ $400</h5>
+                <div className='row' style={{paddingTop:'40px', maxWidth:'350px'}}>
+>>>>>>> cba58d8be09ddf9bac66811a49ac4d460f3ce841
                     <div className='col'>
                     <Card onClick={connect_func} style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={connect} />
