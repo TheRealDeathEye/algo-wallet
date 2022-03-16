@@ -9,6 +9,7 @@ export default function Home() {
     const total = 400;
     const [connected, set_connected] = useState(false);
     const [address, set_address] = useState('');
+    const [balance, set_balance] = useState('');
     const connect_func = async () => {
         await window.ethereum.request({
             method: 'wallet_enable',
@@ -16,9 +17,21 @@ export default function Home() {
               wallet_snap: { ["npm:algorand"]: {} },
             }]
           })
-        getAddress();
+        await getAddress();
+        await getBalance();
         set_connected(true);
 
+    }
+    const getBalance = async () => {
+      console.log("getting balance");
+        let bal = await window.ethereum.request({
+            method: 'wallet_invokeSnap',
+            params: ["npm:algorand", {
+              method: 'returnBalance'
+            }]
+          })
+        console.log(bal);
+        set_balance(bal/1000000);
     }
     const getAddress = async () => {
         let address = await window.ethereum.request({
@@ -39,7 +52,7 @@ export default function Home() {
             </div>
             <div align='center' style={{marginTop:'100px'}}>
                 
-                <h1>{total} Algo</h1>
+                <h1>{balance} Algo</h1>
                 
                 <h5 style={{paddingTop:'10px'}}>~ $400</h5>
                 <div className='row' style={{paddingTop:'40px', maxWidth:'350px'}}>
