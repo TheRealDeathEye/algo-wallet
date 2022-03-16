@@ -39,9 +39,9 @@ export default function Home() {
             </div>
             <div align='center' style={{marginTop:'100px'}}>
                 
-                <h1>{total} Algo</h1>
+                <h1 style={{color:'#76F935'}}>{total} Algo</h1>
                 
-                <h5 style={{paddingTop:'10px'}}>~ $400</h5>
+                <h5 style={{paddingTop:'10px', color:'#76F935'}}>~ $400</h5>
                 <div className='row' style={{paddingTop:'40px', maxWidth:'350px'}}>
                     <div className='col'>
                     <Card onClick={connect_func} style={{backgroundColor:'transparent'}}>
