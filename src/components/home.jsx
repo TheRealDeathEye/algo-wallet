@@ -49,6 +49,12 @@ export default function Home() {
     const toggleReceive = () => {
         set_receive(!receive);
     }
+    const blink = () => {
+      document.getElementById('blinkable').style.color='#76F935';
+      setTimeout(function(){
+        document.getElementById('blinkable').style.color='white';
+      }, 100);
+    }
     return(
         <div>
             <div align='center'>
@@ -58,13 +64,12 @@ export default function Home() {
             </div>
             <div align='center' style={{marginTop:'60px'}}>
                 
-<<<<<<< HEAD
-                <h1>{balance} ALGO</h1>
+                <h1 style={{color:'#76F935'}}>{balance} ALGO</h1>
                 {connected ?
                 <div style={{display:'flex', justifyContent: 'center'}}>
-                  <p style={{fontSize: '75%', marginRight:'5px'}}>{address}</p>
+                  <p style={{fontSize: '2.5vw', marginRight:'5px'}} id='blinkable'>{address}</p>
                   <CopyToClipboard text={address}>
-                  <img style={{width: '20px', height: '20px', cursor:'pointer'}} src={copyIcon}/>
+                  <img style={{width: '3.5vw', height: '3.5vw', cursor:'pointer'}} onClick={blink} src={copyIcon}/>
                   </CopyToClipboard>
                 </div>
                 :
@@ -73,14 +78,6 @@ export default function Home() {
                 
                 
                 <div className='row' style={{paddingTop:'20px', maxWidth:'350px'}}>
-=======
-
-                <h1 style={{color:'#76F935'}}>{balance} Algo</h1>
-
-                
-                <h5 style={{paddingTop:'10px', color:'#76F935'}}>~ $400</h5>
-                <div className='row' style={{paddingTop:'40px', maxWidth:'350px'}}>
->>>>>>> cba58d8be09ddf9bac66811a49ac4d460f3ce841
                     <div className='col'>
                     <Card onClick={connect_func} style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={connect} />
