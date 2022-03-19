@@ -5,6 +5,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.md-form label{
+  background-color: black;
+  color: white;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -1,19 +1,20 @@
 import logo from '../imgs/logo.png';
 import copyIcon from '../imgs/copyIcon.png';
 import receiveIcon from '../imgs/receive.png';
-import send from '../imgs/send.png';
+import sendIcon from '../imgs/send.png';
 import connect from '../imgs/connect.png';
 import Card from 'react-bootstrap/Card';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from 'react';
 import AddressCard from './AddressCard';
-
+import SendCard from './SendCard';
 export default function Home() {
     const total = 400;
     const [connected, set_connected] = useState(false);
     const [address, set_address] = useState('');
     const [balance, set_balance] = useState('');
     const [receive, set_receive] = useState('');
+    const [send, set_send] = useState('');
     const connect_func = async () => {
         await window.ethereum.request({
             method: 'wallet_enable',
@@ -47,7 +48,16 @@ export default function Home() {
         set_address(address);
       }
     const toggleReceive = () => {
+        if(send){
+          set_send(false);
+        }
         set_receive(!receive);
+    }
+    const toggleSend = () => {
+      if(receive){
+        set_receive(false);
+      }
+      set_send(!send);
     }
     return(
         <div>
@@ -57,9 +67,8 @@ export default function Home() {
                 
             </div>
             <div align='center' style={{marginTop:'60px'}}>
-                
-<<<<<<< HEAD
-                <h1>{balance} ALGO</h1>
+
+                <h1 style={{color:'#76F935'}}>{balance} ALGO</h1>
                 {connected ?
                 <div style={{display:'flex', justifyContent: 'center'}}>
                   <p style={{fontSize: '75%', marginRight:'5px'}}>{address}</p>
@@ -73,14 +82,7 @@ export default function Home() {
                 
                 
                 <div className='row' style={{paddingTop:'20px', maxWidth:'350px'}}>
-=======
 
-                <h1 style={{color:'#76F935'}}>{balance} Algo</h1>
-
-                
-                <h5 style={{paddingTop:'10px', color:'#76F935'}}>~ $400</h5>
-                <div className='row' style={{paddingTop:'40px', maxWidth:'350px'}}>
->>>>>>> cba58d8be09ddf9bac66811a49ac4d460f3ce841
                     <div className='col'>
                     <Card onClick={connect_func} style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={connect} />
@@ -95,8 +97,8 @@ export default function Home() {
                     </div>
                     <div className='col'>
                     <Card style={{backgroundColor:'transparent'}}>
-                        <Card.Img variant='top' src={send} />
-                        <Card.Text>Send</Card.Text>
+                        <Card.Img variant='top' onClick={toggleSend} src={sendIcon} />
+                        <Card.Text onClick={toggleSend}>Send</Card.Text>
                     </Card>
                     </div>
                 </div>
@@ -108,6 +110,7 @@ export default function Home() {
                         :
                         null
                         }
+                {send?connected?<SendCard/>:<p>Connect wallet first</p>:null}
             </div>
         </div>
     );
