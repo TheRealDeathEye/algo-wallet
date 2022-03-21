@@ -1,12 +1,13 @@
 import logo from '../imgs/logo.png';
 import copyIcon from '../imgs/copyIcon.png';
 import receiveIcon from '../imgs/receive.png';
-import send from '../imgs/send.png';
+import sendIcon from '../imgs/send.png';
 import connect from '../imgs/connect.png';
 import Card from 'react-bootstrap/Card';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from 'react';
 import AddressCard from './AddressCard';
+import SendCard from './SendCard';
 
 export default function Home() {
     const total = 400;
@@ -14,6 +15,7 @@ export default function Home() {
     const [address, set_address] = useState('');
     const [balance, set_balance] = useState('');
     const [receive, set_receive] = useState('');
+    const [send, set_send] = useState('');
     const connect_func = async () => {
         await window.ethereum.request({
             method: 'wallet_enable',
@@ -47,7 +49,16 @@ export default function Home() {
         set_address(address);
       }
     const toggleReceive = () => {
+        if(send){
+          set_send(false);
+        }
         set_receive(!receive);
+    }
+    const toggleSend = () => {
+      if(receive){
+        set_receive(false);
+      }
+      set_send(!send);
     }
     const blink = () => {
       document.getElementById('blinkable').style.color='#76F935';
@@ -55,6 +66,7 @@ export default function Home() {
         document.getElementById('blinkable').style.color='white';
       }, 100);
     }
+    
     return(
         <div>
             <div align='center'>
@@ -63,19 +75,17 @@ export default function Home() {
                 
             </div>
             <div align='center' style={{marginTop:'60px'}}>
-                
                 <h1 style={{color:'#76F935'}}>{balance} ALGO</h1>
                 {connected ?
-                <div style={{display:'flex', justifyContent: 'center'}}>
-                  <p style={{fontSize: '2.5vw', marginRight:'5px'}} id='blinkable'>{address}</p>
+                <div style={{display:'flex', justifyContent: 'center', paddingTop:'20px'}}>
+                  <p style={{fontSize: '1.5vw', marginRight:'5px'}} id='blinkable'>{address}</p>
                   <CopyToClipboard text={address}>
-                  <img style={{width: '3.5vw', height: '3.5vw', cursor:'pointer'}} onClick={blink} src={copyIcon}/>
+                  <img onClick={blink} style={{width: '20px', height: '20px', cursor:'pointer'}} src={copyIcon}/>
                   </CopyToClipboard>
                 </div>
                 :
                 null
                 }
-                
                 
                 <div className='row' style={{paddingTop:'20px', maxWidth:'350px'}}>
                     <div className='col'>
@@ -92,8 +102,8 @@ export default function Home() {
                     </div>
                     <div className='col'>
                     <Card style={{backgroundColor:'transparent'}}>
-                        <Card.Img variant='top' src={send} />
-                        <Card.Text>Send</Card.Text>
+                        <Card.Img variant='top' onClick={toggleSend} src={sendIcon} />
+                        <Card.Text onClick={toggleSend}>Send</Card.Text>
                     </Card>
                     </div>
                 </div>
@@ -105,6 +115,7 @@ export default function Home() {
                         :
                         null
                         }
+                {send?connected?<SendCard/>:<p>Connect wallet first</p>:null}
             </div>
         </div>
     );
