@@ -1,4 +1,3 @@
-
 import { Send, Clipboard } from 'react-bootstrap-icons';
 
 import { MDBFormInline, MDBInput } from "mdbreact";
