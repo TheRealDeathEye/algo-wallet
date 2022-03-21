@@ -60,14 +60,13 @@ export default function Home() {
       }
       set_send(!send);
     }
-
     const blink = () => {
       document.getElementById('blinkable').style.color='#76F935';
       setTimeout(function(){
         document.getElementById('blinkable').style.color='white';
       }, 100);
     }
-
+    
     return(
         <div>
             <div align='center'>
@@ -76,7 +75,6 @@ export default function Home() {
                 
             </div>
             <div align='center' style={{marginTop:'60px'}}>
-
                 <h1 style={{color:'#76F935'}}>{balance} ALGO</h1>
                 {connected ?
                 <div style={{display:'flex', justifyContent: 'center', paddingTop:'20px'}}>
@@ -89,9 +87,7 @@ export default function Home() {
                 null
                 }
                 
-                
                 <div className='row' style={{paddingTop:'20px', maxWidth:'350px'}}>
-
                     <div className='col'>
                     <Card onClick={connect_func} style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={connect} />
