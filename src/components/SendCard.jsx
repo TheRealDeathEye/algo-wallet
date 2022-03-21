@@ -10,16 +10,24 @@ export default function SendCard(props){
         <div style={{width: '70vw'}}>
         
         
-        <div>
-            <MDBInput style={{color:'white', fontSize:"75%"}} id="address" outline/>
-            <Clipboard style={{width:"30px"}} color="white"/>
+        <div className='row'>
+            <div className='col-10'>
+            <MDBInput style={{color:'white', fontSize:"75%"}} id="address" placeholder='address' outline/>
+            </div>
+            <div className='col-2'>
+            <Clipboard style={{height:'100%'}} color="white"/>
+            </div>
         </div>
 
 
         
-        <div style={{display:"inline"}}>    
-          <MDBInput style={{color:'white'}} min="0" step="0.1" type="number" id="amount" outline/>
-          <Send color="white"/>
+        <div className='row'>
+            <div className='col-10'>   
+            <MDBInput style={{color:'white'}} min="0" step="0.1" type="number" id="amount" outline/>
+            </div>
+            <div className='col-2'>
+            <Send style={{height:'100%'}} color="white"/>
+            </div>
         </div>
         
         </div>

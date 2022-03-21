@@ -8,6 +8,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from 'react';
 import AddressCard from './AddressCard';
 import SendCard from './SendCard';
+
 export default function Home() {
     const total = 400;
     const [connected, set_connected] = useState(false);
@@ -59,6 +60,13 @@ export default function Home() {
       }
       set_send(!send);
     }
+    const blink = () => {
+      document.getElementById('blinkable').style.color='#76F935';
+      setTimeout(function(){
+        document.getElementById('blinkable').style.color='white';
+      }, 100);
+    }
+    
     return(
         <div>
             <div align='center'>
@@ -67,22 +75,19 @@ export default function Home() {
                 
             </div>
             <div align='center' style={{marginTop:'60px'}}>
-
                 <h1 style={{color:'#76F935'}}>{balance} ALGO</h1>
                 {connected ?
-                <div style={{display:'flex', justifyContent: 'center'}}>
-                  <p style={{fontSize: '75%', marginRight:'5px'}}>{address}</p>
+                <div style={{display:'flex', justifyContent: 'center', paddingTop:'20px'}}>
+                  <p style={{fontSize: '1.5vw', marginRight:'5px'}} id='blinkable'>{address}</p>
                   <CopyToClipboard text={address}>
-                  <img style={{width: '20px', height: '20px', cursor:'pointer'}} src={copyIcon}/>
+                  <img onClick={blink} style={{width: '20px', height: '20px', cursor:'pointer'}} src={copyIcon}/>
                   </CopyToClipboard>
                 </div>
                 :
                 null
                 }
                 
-                
                 <div className='row' style={{paddingTop:'20px', maxWidth:'350px'}}>
-
                     <div className='col'>
                     <Card onClick={connect_func} style={{backgroundColor:'transparent'}}>
                         <Card.Img variant='top' src={connect} />
