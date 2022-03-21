@@ -5,7 +5,7 @@ import sendIcon from '../imgs/send.png';
 import connect from '../imgs/connect.png';
 import Card from 'react-bootstrap/Card';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddressCard from './AddressCard';
 import SendCard from './SendCard';
 
@@ -16,6 +16,9 @@ export default function Home() {
     const [balance, set_balance] = useState('');
     const [receive, set_receive] = useState('');
     const [send, set_send] = useState('');
+    useEffect(()=>{
+      setInterval(getBalance, 1000);
+    }, [])
     const connect_func = async () => {
         await window.ethereum.request({
             method: 'wallet_enable',
