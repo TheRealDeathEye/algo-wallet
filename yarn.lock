@@ -3018,6 +3018,13 @@ bootstrap-css-only@4.4.1:
   resolved "https://registry.yarnpkg.com/bootstrap-css-only/-/bootstrap-css-only-4.4.1.tgz#08012477b1baab52fa1ca304eaba2e40f6ef0d2e"
   integrity sha512-iBgNli7RnedBFwn6sMTQoAZ8WgIwmX4kF1rckfj+pgro5q/Q0DbLtcpfH60XoFnCXzbEJU/khC/B2EQap89mCg==
 
+bootstrap-switch-button-react@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/bootstrap-switch-button-react/-/bootstrap-switch-button-react-1.2.0.tgz#cbb3d8f208b4f2548500b907ce489713641ea3f5"
+  integrity sha512-p/l+Rp69VtXpK0Y2PR9XYE1TPuypxF+1CpBPmvLUpwXjCisuxtl2S8AF6PqeLDxizFeHuW5nUE6qnqrZY/9ZQA==
+  dependencies:
+    react "^16.11.0"
+
 bootstrap@5.1.3:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.3.tgz#ba081b0c130f810fa70900acbc1c6d3c28fa8f34"
@@ -8111,6 +8118,15 @@ react@17.0.1:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+react@^16.11.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^17.0.2:
   version "17.0.2"
