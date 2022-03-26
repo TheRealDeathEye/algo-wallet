@@ -15,7 +15,7 @@ const Switch = ({ onClick, onColor }) => {
         />
         <label
           style={{ 
-              background: on && '#06D6A0',
+              background: on && '#76F935',
               width: on && '50px',
             }}
           className="react-switch-label"

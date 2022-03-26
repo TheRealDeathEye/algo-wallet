@@ -2,10 +2,10 @@ import logo from '../imgs/logo.png';
 import copyIcon from '../imgs/copyIcon.png';
 import receiveIcon from '../imgs/receive.png';
 import sendIcon from '../imgs/send.png';
-import connect from '../imgs/connect.png';
+import connect from '../imgs/metaflask.png';
 import Card from 'react-bootstrap/Card';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AddressCard from './AddressCard';
 import SendCard from './SendCard';
 import Switch from './Switch';
@@ -19,7 +19,6 @@ export default function Home() {
     const [receive, set_receive] = useState('');
     const [send, set_send] = useState('');
     const [testnet, set_testnet] = useState(false);
-    const [current_interval, set_current_interval] = useState(null);
     useInterval(async()=> await getBalance(), 2000);
     
     const connect_func = async () => {
@@ -42,10 +41,6 @@ export default function Home() {
     }
     
     const getBalance = async () => {
-      console.log("getting balance");
-      console.log("testnet: " + testnet);
-      console.log("current interval is : ", current_interval);
-      
         let bal = await window.ethereum.request({
             method: 'wallet_invokeSnap',
             params: ["npm:algorand", {
@@ -72,9 +67,7 @@ export default function Home() {
         }
         set_receive(!receive);
     }
-    const toggle = (value) => {
-      return !value;
-    }
+
     const toggleSend = () => {
       if(receive){
         set_receive(false);
@@ -103,7 +96,7 @@ export default function Home() {
                 <div style={{display:'flex', justifyContent: 'center', paddingTop:'20px'}}>
                   <p style={{fontSize: '1.5vw', marginRight:'5px'}} id='blinkable'>{address}</p>
                   <CopyToClipboard text={address}>
-                  <img onClick={blink} style={{width: '20px', height: '20px', cursor:'pointer'}} src={copyIcon}/>
+                  <img onClick={blink} style={{width: '20px', height: '20px', cursor:'pointer'}} src={copyIcon} alt='copyIcon'/>
                   </CopyToClipboard>
                 </div>
                 :
