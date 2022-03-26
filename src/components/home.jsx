@@ -143,7 +143,7 @@ export default function Home() {
                 <br/>
                 {receive?
                   <div>
-                    {connected?<AddressCard address={address}/>:<p>connect wallet first</p>}
+                    {connected?<AddressCard address={address}/>:<p>Connect wallet first</p>}
                   </div>
                         :
                         null
